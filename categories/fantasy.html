@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Fantasy Category</title>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-lg">
+        <a href="../index.html" class="text-2xl font-bold">Model Shop</a>
+        <ul class="flex space-x-6">
+            <li><a href="../index.html" class="hover:text-yellow-400">Home</a></li>
+            <li><a href="../categories.html" class="hover:text-yellow-400">Categories</a></li>
+            <li><a href="../upload.html" class="hover:text-yellow-400">Upload</a></li>
+            <li><a href="../profile.html" class="hover:text-yellow-400">Profile</a></li>
+        </ul>
+        <div>
+            <a href="../login.html" class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500">Login</a>
+            <a href="../register.html" class="ml-2 border px-4 py-2 rounded-lg hover:bg-gray-700">Sign Up</a>
+        </div>
+    </nav>
+    <section class="p-10 max-w-6xl mx-auto">
+        <h1 class="text-4xl font-extrabold mb-8 text-center text-gray-800">Fantasy Models</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- สินค้าตัวอย่าง 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative">
+                    <img src="/assets/fantasy/dragon.png" alt="Dragon Model" class="absolute inset-0 w-full h-full object-cover object-center">
+                </div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Fire Dragon</h2>
+                        <p class="text-gray-600 text-sm mb-4">มังกรไฟแกร่งกล้า ปีกใหญ่โบยบิน</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/wizard.png" alt="Wizard Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Ancient Wizard</h2>
+                        <p class="text-gray-600 text-sm mb-4">พ่อมดโบราณ เวทมนตร์ลึกลับ</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/knight.png" alt="Knight Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Royal Knight</h2>
+                        <p class="text-gray-600 text-sm mb-4">อัศวินแห่งราชอาณาจักร เกราะเงางาม</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/elf.png" alt="Elf Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Forest Elf</h2>
+                        <p class="text-gray-600 text-sm mb-4">เอลฟ์ป่าไผ่ นักธนูมือไว</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 5 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/castle.png" alt="Castle Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Magic Castle</h2>
+                        <p class="text-gray-600 text-sm mb-4">ปราสาทมหัศจรรย์ ลอยฟ้าในเมฆ</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 6 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/unicorn.png" alt="Unicorn Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Mystic Unicorn</h2>
+                        <p class="text-gray-600 text-sm mb-4">ยูนิคอร์นศักดิ์สิทธิ์ เงาเต้ามหัศจรรย์</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 7 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/phoenix.png" alt="Phoenix Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Fire Phoenix</h2>
+                        <p class="text-gray-600 text-sm mb-4">นกฟินิกซ์เพลิงโบราณ เกิดใหม่จากเถ้าถ่าน</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+            <!-- สินค้าตัวอย่าง 8 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition duration-300 cursor-pointer">
+                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/fantasy/magic-staff.png" alt="Magic Staff Model" class="absolute inset-0 w-full h-full object-cover object-center"></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-lg mb-2 text-gray-800">Elder Staff</h2>
+                        <p class="text-gray-600 text-sm mb-4">ไม้เท้าเวทมนตร์แห่งผู้เฒ่า อำนาจลึกลับ</p>
+                    </div>
+                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">ดูรายละเอียด</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-gray-900 text-white mt-12 p-8">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-yellow-400">Model Shop</h3>
+                <p class="text-sm text-gray-400">
+                    The premier marketplace for high-quality 3D models, assets, and digital art.
+                </p>
+                <p class="text-sm text-gray-400 mt-2">
+                    Email: support@modelshop.com
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="../index.html" class="hover:text-yellow-400 transition">Home</a></li>
+                    <li><a href="../shop.html" class="hover:text-yellow-400 transition">Shop</a></li>
+                    <li><a href="../categories.html" class="hover:text-yellow-400 transition">Categories</a></li>
+                    <li><a href="../upload.html" class="hover:text-yellow-400 transition">Upload Model</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">My Account</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="../profile.html" class="hover:text-yellow-400 transition">Profile</a></li>
+                    <li><a href="../login.html" class="hover:text-yellow-400 transition">Login</a></li>
+                    <li><a href="../register.html" class="hover:text-yellow-400 transition">Register</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Newsletter</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                    Subscribe to get the latest models and discounts.
+                </p>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email"
+                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none">
+                    <button class="bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+            <p class="text-sm text-gray-500">&copy; 2025 ModelShop. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
