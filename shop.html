@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100">
     <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-lg">
-        <a href="index.html" class="text-2xl font-bold">Model Shop</a>
+        <a href="index.html" class="text-2xl font-bold">ModelShop</a>
         <ul class="flex space-x-6">
             <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
             <li><a href="categories.html" class="hover:text-yellow-400">Categories</a></li>
@@ -23,15 +23,29 @@
         </div>
     </nav>
 
-    <section class="p-10">
-        <h1 class="text-3xl font-bold mb-6">🛒 All Models</h1>
-        <div class="flex justify-between items-center mb-6 p-4 bg-white rounded-lg shadow">
-            <div class="text-gray-600">Showing 1-12 of 45 models</div>
-            <select class="border p-2 rounded">
-                <option>Sort by: Newest</option>
-                <option>Sort by: Price Low to High</option>
-                <option>Sort by: Price High to Low</option>
-            </select>
+    <section class="p-10 max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">🛒 All Models</h1>
+
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 p-4 bg-white rounded-lg shadow-md">
+            <div class="relative w-full sm:w-1/2 mb-4 sm:mb-0">
+                <input type="text" placeholder="Search models..."
+                    class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-gray-900">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="text-gray-600 hidden sm:block">Showing 1-12 of 45 models</div>
+                <select class="border p-2 rounded-lg bg-white text-gray-900">
+                    <option>Sort by: Newest</option>
+                    <option>Sort by: Price Low to High</option>
+                    <option>Sort by: Price High to Low</option>
+                </select>
+            </div>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -85,7 +99,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
             <div>
-                <h3 class="text-xl font-bold mb-4 text-yellow-400">??? Shop</h3>
+                <h3 class="text-xl font-bold mb-4 text-yellow-400">ModelShop</h3>
                 <p class="text-sm text-gray-400">
                     The premier marketplace for high-quality 3D models, assets, and digital art.
                 </p>
