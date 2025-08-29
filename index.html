@@ -6,27 +6,79 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Home</title>
     <style>
-        /* Original animations */
-        @keyframes slideShow {
+        /* Background Animation */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(135deg, #1e293b, #0f172a, #1e3a8a, #7c3aed);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            animation: spin 30s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Floating shapes */
+        @keyframes floating {
 
             0%,
-            45% {
-                transform: translateX(0%);
+            100% {
+                transform: translateY(0px) rotate(0deg);
             }
 
-            55%,
-            95% {
-                transform: translateX(-100%);
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateY(-15px) rotate(0.5deg);
             }
         }
 
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(1deg); }
-            50% { transform: translateY(-5px) rotate(-1deg); }
-            75% { transform: translateY(-15px) rotate(0.5deg); }
+        .floating-shape {
+            position: absolute;
+            pointer-events: none;
+            animation: floating 8s ease-in-out infinite;
         }
 
+        /* Glow Button */
         @keyframes glow {
 
             0%,
@@ -36,86 +88,6 @@
 
             50% {
                 box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6);
-            }
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* NEW: Enhanced animations */
-        @keyframes sparkle {
-
-            0%,
-            100% {
-                opacity: 0;
-                transform: scale(0) rotate(0deg);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1) rotate(180deg);
-            }
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(5px) rotate(1deg); }
-            50% { transform: translateX(-3px) rotate(-1deg); }
-            75% { transform: translateX(2px) rotate(0.5deg); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes rainbow {
-            0% {
-                color: #ff6b6b;
-            }
-
-            16.66% {
-                color: #feca57;
-            }
-
-            33.33% {
-                color: #48dbfb;
-            }
-
-            50% {
-                color: #ff9ff3;
-            }
-
-            66.66% {
-                color: #54a0ff;
-            }
-
-            83.33% {
-                color: #5f27cd;
-            }
-
-            100% {
-                color: #ff6b6b;
-            }
-        }
-
-        @keyframes typewriter {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink {
-            50% {
-                border-color: transparent;
             }
         }
 
@@ -136,114 +108,61 @@
             }
         }
 
-        @keyframes slide-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes rotate-3d {
-            from {
-                transform: rotateY(0deg);
-            }
-
-            to {
-                transform: rotateY(360deg);
-            }
-        }
-
-        @keyframes pulse-border {
-            0% {
-                border-color: rgba(251, 191, 36, 0.3);
-            }
-
-            50% {
-                border-color: rgba(251, 191, 36, 1);
-            }
-
-            100% {
-                border-color: rgba(251, 191, 36, 0.3);
-            }
-        }
-
-        /* NEW: Button Pop-in Animation */
-        @keyframes button-pop {
-            0% {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Apply animations */
-        .slide-animation {
-            animation: slideShow 8s infinite ease-in-out;
-        }
-
-        .floating-card {
-            animation: floating 6s ease-in-out infinite;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .floating-card:nth-child(2) {
-            animation-delay: 2s;
-        }
-
-        .floating-card:nth-child(3) {
-            animation-delay: 4s;
-        }
-
         .glow-button {
             animation: glow 2s ease-in-out infinite alternate, ripple 3s infinite;
             position: relative;
-            overflow: hidden;
+            /* แก้ไข: เพิ่ม relative เพื่อให้ pseudo-elements ทำงานได้ถูกต้อง */
+            overflow: visible;
+            /* แก้ไข: เปลี่ยนจาก hidden เป็น visible */
         }
 
-        header {
-            background: linear-gradient(270deg, #1e293b, #0f172a, #1e3a8a, #7c3aed);
-            background-size: 600% 600%;
-            animation: gradientBG 15s ease infinite;
+        /* Text effects */
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(5px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateX(2px) rotate(0.5deg);
+            }
         }
 
-        .floating-card:hover {
-            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
-        /* NEW: Enhanced effects */
-        .sparkle {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sparkle::before,
-        .sparkle::after {
-            content: '⭐';
-            position: absolute;
-            animation: sparkle 2s infinite;
-            pointer-events: none;
-        }
-
-        .sparkle::before {
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .sparkle::after {
-            top: 80%;
-            right: 10%;
-            animation-delay: 1s;
+        .gradient-text {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientBG 3s ease infinite;
         }
 
         .wave-text {
@@ -255,143 +174,66 @@
             animation: bounce 2s infinite;
         }
 
-        .rainbow-text {
-            animation: rainbow 3s linear infinite;
-            font-weight: bold;
-        }
-
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid;
-            white-space: nowrap;
-            animation: typewriter 4s steps(40) infinite, blink 0.5s step-end infinite alternate;
-        }
-
-        .slide-up {
-            animation: slide-up 1s ease-out forwards;
-        }
-
-        .rotate-hover:hover {
-            animation: rotate-3d 1s linear infinite;
-        }
-
-        .pulse-border {
-            border: 2px solid rgba(251, 191, 36, 0.3);
-            animation: pulse-border 2s infinite;
-        }
-
-        /* Gradient text effect */
-        .gradient-text {
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientBG 3s ease infinite;
-        }
-
-        /* Glass morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Neon glow effect */
-        .neon-glow {
-            text-shadow:
-                0 0 5px currentColor,
-                0 0 10px currentColor,
-                0 0 20px currentColor,
-                0 0 40px currentColor;
-        }
-
-        /* Remove neon glow for specific elements */
-        .no-glow {
-            text-shadow: none !important;
-        }
-
-        /* Floating navigation */
+        /* Navbar */
         nav {
             backdrop-filter: blur(10px);
             background: rgba(17, 24, 39, 0.9);
         }
 
-        /* Card hover effects */
-        .card-hover:hover {
-            transform: perspective(1000px) rotateX(10deg) translateY(-10px);
-            transition: all 0.3s ease-in-out;
+        /* Carousel animation */
+        @keyframes slideShow {
+            0% {
+                transform: translateX(0%);
+            }
+
+            50% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
         }
 
-        /* Price animation */
-        .price-pulse {
-            animation: bounce 1s infinite, rainbow 2s linear infinite;
+        .carousel {
+            display: flex;
+            width: 200%;
+            animation: slideShow 30s linear infinite;
+            /* ปรับความเร็วและชนิดของอนิเมชั่น */
         }
 
-        /* Fire effect for featured text */
-        .fire-text {
+        .carousel:hover {
+            animation-play-state: paused;
+        }
+
+        /* Product Card Hover */
+        .product-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: perspective(1000px) scale(1.03) translateY(-5px);
+            z-index: 50;
             position: relative;
-            color: #ff4500;
-            text-shadow:
-                0 0 10px #ff4500,
-                0 0 20px #ff4500,
-                0 0 40px #ff4500;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
-        /* Floating shapes */
-        .floating-shape {
-            position: absolute;
-            pointer-events: none;
-            animation: floating 8s ease-in-out infinite;
-        }
 
-        .shape-1 {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            top: 70%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .shape-3 {
-            bottom: 20%;
-            left: 15%;
-            animation-delay: 4s;
-        }
-
-        /* Enhanced footer */
+        /* Footer */
         footer {
             background: linear-gradient(135deg, #1f2937, #111827, #0f172a);
             position: relative;
             overflow: hidden;
         }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
-            animation: rotate-3d 20s linear infinite;
-        }
     </style>
 </head>
 
-<body class="bg-gray-100">
-    <div class="floating-shape shape-1 text-yellow-400 text-4xl opacity-20">⭐</div>
-    <div class="floating-shape shape-2 text-blue-400 text-3xl opacity-20">💎</div>
-    <div class="floating-shape shape-3 text-purple-400 text-5xl opacity-20">🚀</div>
-
+<body>
     <nav class="text-white px-6 py-4 flex justify-between items-center shadow-lg fixed w-full z-50">
         <a href="index.html" class="text-2xl font-bold gradient-text wave-text">ModelShop</a>
         <ul class="flex space-x-6">
-            <li><a href="index.html" class="hover:text-yellow-400 transition-all duration-300 hover:scale-110">Home</a>
+            <li><a href="index.html"
+                    class="hover:text-yellow-400 transition-all duration-300 hover:scale-110 text-yellow-400">Home</a>
             </li>
             <li><a href="categories.html"
                     class="hover:text-yellow-400 transition-all duration-300 hover:scale-110">Categories</a></li>
@@ -409,100 +251,190 @@
         </div>
     </nav>
 
-    <header class="text-white py-64 px-10 text-center relative overflow-hidden">
+    <header class="hero-bg text-white py-64 px-10 text-center relative">
         <div class="relative z-10">
-            <h1 class="text-6xl font-extrabold mb-4 gradient-text bounce-text">Find Your Next Masterpiece</h1>
-            <p class="text-xl mb-8 text-gray-300 typewriter slide-up">The premier marketplace for high-quality 3D models
-                and assets.</p>
+            <h1 class="text-6xl font-extrabold mb-4 gradient-text">Find Your Next Masterpiece!</h1>
+            <p class="text-xl mb-8 text-gray-300">The premier marketplace for high-quality 3D models and assets.</p>
             <a href="shop.html"
-                class="glow-button bg-yellow-400 text-gray-900 px-12 py-6 text-xl font-bold rounded-full hover:bg-yellow-500 transition-all duration-300 shadow-2xl hover:scale-110 sparkle btn-enhanced">
+                class="glow-button bg-yellow-400 text-gray-900 px-12 py-6 text-xl font-bold rounded-full hover:bg-yellow-500 transition-all duration-300 shadow-2xl hover:scale-110">
                 Explore Models
             </a>
             <a href="categories.html"
-                class="glass border-2 border-white px-12 py-6 text-xl font-bold rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-2xl hover:scale-110 btn-enhanced">
+                class="ml-4 glass border-2 border-white px-12 py-6 text-xl font-bold rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-2xl hover:scale-110">
                 Browse Categories
             </a>
         </div>
     </header>
 
-    <section class="p-10 overflow-hidden pt-20">
+    <section class="p-10 pt-20 bg-gray-100">
         <h1 class="text-4xl font-bold mb-6 text-center">
-            <span class="fire-text bounce-text no-glow">🔥 Featured Models</span>
+            <span class="gradient-text bounce-text">🔥 Featured Models</span>
         </h1>
-        <div class="relative">
-            <div class="flex slide-animation" id="carousel">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 min-w-full">
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Cyberpunk Runner.png" alt="Character A"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Cyberpunk Runner</h2>
-                        <p class="text-gray-600 wave-text">Creator: JohnDoe</p>
+        <div class="relative overflow-hidden">
+            <div class="carousel flex space-x-6">
+                <div class="flex flex-shrink-0 space-x-6">
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model1.png" alt="Cyberpunk Runner"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Cyberpunk Runner</h2>
+                        <p class="text-gray-600 text-sm">Creator: JohnDoe</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$20</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$20</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Fantasy Warrior.png" alt="Character B"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Fantasy Warrior</h2>
-                        <p class="text-gray-600 wave-text">Creator: ModelMaster</p>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model2.png" alt="Fantasy Warrior"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Fantasy Warrior</h2>
+                        <p class="text-gray-600 text-sm">Creator: ModelMaster</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$15</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$15</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Star Cruiser MK. II.png" alt="Sci-Fi Spaceship"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Star Cruiser MK. II</h2>
-                        <p class="text-gray-600 wave-text">Creator: Space_CAD</p>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model3.png" alt="Star Cruiser MK. II"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Star Cruiser MK. II</h2>
+                        <p class="text-gray-600 text-sm">Creator: Space_CAD</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$45</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$45</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 min-w-full">
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Dragon Slayer.png" alt="Dragon Slayer"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Dragon Slayer</h2>
-                        <p class="text-gray-600 wave-text">Creator: ArtMaster</p>
+
+                <div class="flex flex-shrink-0 space-x-6">
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model1.png" alt="Dragon Slayer"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Dragon Slayer</h2>
+                        <p class="text-gray-600 text-sm">Creator: ArtMaster</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$35</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$35</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Mystic Wizard.png" alt="Mystic Wizard"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Mystic Wizard</h2>
-                        <p class="text-gray-600 wave-text">Creator: MagicCraft</p>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model2.png" alt="Mystic Wizard"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Mystic Wizard</h2>
+                        <p class="text-gray-600 text-sm">Creator: MagicCraft</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$25</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$25</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow floating-card pulse-border card-hover sparkle">
-                        <img src="assets/slide-animate/Galaxy Fighter.png" alt="Galaxy Fighter"
-                            class="rounded-lg object-cover h-64 w-full rotate-hover">
-                        <h2 class="text-xl font-bold mt-3 gradient-text">Galaxy Fighter</h2>
-                        <p class="text-gray-600 wave-text">Creator: SpaceForge</p>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model3.png" alt="Galaxy Fighter"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Galaxy Fighter</h2>
+                        <p class="text-gray-600 text-sm">Creator: SpaceForge</p>
                         <div class="flex justify-between items-center mt-3">
-                            <p class="text-2xl font-semibold text-indigo-600 price-pulse">$50</p>
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$50</p>
                             <button
-                                class="glow-button bg-yellow-400 px-4 py-2 rounded-lg hover:scale-110 transition-transform">Buy
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-shrink-0 space-x-6">
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model1.png" alt="Cyberpunk Runner"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Cyberpunk Runner</h2>
+                        <p class="text-gray-600 text-sm">Creator: JohnDoe</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$20</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model2.png" alt="Fantasy Warrior"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Fantasy Warrior</h2>
+                        <p class="text-gray-600 text-sm">Creator: ModelMaster</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$15</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model3.png" alt="Star Cruiser MK. II"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Star Cruiser MK. II</h2>
+                        <p class="text-gray-600 text-sm">Creator: Space_CAD</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$45</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-shrink-0 space-x-6">
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model1.png" alt="Dragon Slayer"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Dragon Slayer</h2>
+                        <p class="text-gray-600 text-sm">Creator: ArtMaster</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$35</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model2.png" alt="Mystic Wizard"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Mystic Wizard</h2>
+                        <p class="text-gray-600 text-sm">Creator: MagicCraft</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$25</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
+                                Now</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow hover:scale-105 transition duration-500 floating-card glow-button w-[280px] mx-auto">
+                        <img src="assets/model3.png" alt="Galaxy Fighter"
+                            class="rounded-lg object-cover h-[280px] w-full hover:brightness-110 transition duration-300">
+                        <h2 class="text-lg font-bold mt-3 gradient-text">Galaxy Fighter</h2>
+                        <p class="text-gray-600 text-sm">Creator: SpaceForge</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <p class="text-xl font-semibold text-indigo-600 animate-pulse">$50</p>
+                            <button
+                                class="bg-yellow-400 px-3 py-1 rounded-lg hover:bg-yellow-500 hover:scale-110 transition duration-300 text-sm">Buy
                                 Now</button>
                         </div>
                     </div>
@@ -511,63 +443,41 @@
         </div>
     </section>
 
+
     <footer class="text-white mt-12 p-8 relative">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-            <div class="slide-up">
-                <h3 class="text-xl font-bold mb-4 gradient-text wave-text bounce-text">ModelShop</h3>
-                <p class="text-sm text-gray-400">
-                    The premier marketplace for high-quality 3D models, assets, and digital art.
-                </p>
-                <p class="text-sm text-gray-400 mt-2 rainbow-text">
-                    Email: support@modelshop.com
-                </p>
+            <div>
+                <h3 class="text-xl font-bold mb-4 gradient-text wave-text">ModelShop</h3>
+                <p class="text-sm text-gray-400">The premier marketplace for high-quality 3D models, assets, and digital
+                    art.</p>
+                <p class="text-sm text-gray-400 mt-2 font-bold gradient-text">Email: support@modelshop.com</p>
             </div>
-            <div class="slide-up">
-                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1 no-glow">Quick Links</h3>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Quick Links</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="index.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Home</a>
-                    </li>
-                    <li><a href="shop.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Shop</a>
-                    </li>
-                    <li><a href="categories.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Categories</a>
-                    </li>
-                    <li><a href="upload.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Upload
-                            Model</a></li>
+                    <li><a href="index.html" class="hover:text-yellow-400 transition-all">Home</a></li>
+                    <li><a href="shop.html" class="hover:text-yellow-400 transition-all">Shop</a></li>
+                    <li><a href="categories.html" class="hover:text-yellow-400 transition-all">Categories</a></li>
+                    <li><a href="upload.html" class="hover:text-yellow-400 transition-all">Upload Model</a></li>
                 </ul>
             </div>
-            <div class="slide-up">
-                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1 no-glow">My Account</h3>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">My Account</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="profile.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Profile</a>
-                    </li>
-                    <li><a href="login.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Login</a>
-                    </li>
-                    <li><a href="register.html"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">Register</a>
-                    </li>
-                    <li><a href="#"
-                            class="hover:text-yellow-400 transition-all duration-300 hover:scale-105 hover:translate-x-2">FAQ</a>
-                    </li>
+                    <li><a href="profile.html" class="hover:text-yellow-400 transition-all">Profile</a></li>
+                    <li><a href="login.html" class="hover:text-yellow-400 transition-all">Login</a></li>
+                    <li><a href="register.html" class="hover:text-yellow-400 transition-all">Register</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-all">FAQ</a></li>
                 </ul>
             </div>
-            <div class="slide-up">
-                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1 no-glow">Newsletter</h3>
-                <p class="text-sm text-gray-400 mb-3 wave-text">
-                    Subscribe to get the latest models and discounts.
-                </p>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Newsletter</h3>
+                <p class="text-sm text-gray-400 mb-3">Subscribe to get the latest models and discounts.</p>
                 <form class="flex">
                     <input type="email" placeholder="Your Email"
-                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none pulse-border transition-all duration-300 focus:scale-105">
+                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none">
                     <button
-                        class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm hover:scale-105 transition-transform">
-                        Subscribe
-                    </button>
+                        class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">Subscribe</button>
                 </form>
             </div>
         </div>
