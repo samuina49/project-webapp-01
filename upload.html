@@ -1,124 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Upload Model</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Upload Model</title>
+    <style>
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+                transform: scale(1);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+                transform: scale(1.02);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(5px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateX(2px) rotate(0.5deg);
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientBG 3s ease infinite;
+        }
+
+        .wave-text {
+            display: inline-block;
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        .glow-button {
+            animation: glow 2s ease-in-out infinite alternate, ripple 3s infinite;
+            position: relative;
+            overflow: visible;
+        }
+
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        .page-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+            animation: underline-grow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes underline-grow {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1f2937, #111827, #0f172a);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-  <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-lg">
-  <a href="index.html" class="text-2xl font-bold">Model Shop</a>
-  <ul class="flex space-x-6">
-    <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
-    <li><a href="categories.html" class="hover:text-yellow-400">Categories</a></li>
-    <li><a href="upload.html" class="hover:text-yellow-400">Upload</a></li>
-    <li><a href="profile.html" class="hover:text-yellow-400">Profile</a></li>
-  </ul>
-  <div>
-    <a href="login.html" class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500">Login</a>
-    <a href="register.html" class="ml-2 border px-4 py-2 rounded-lg hover:bg-gray-700">Sign Up</a>
-  </div>
-</nav>
 
-<section class="p-10 max-w-5xl mx-auto">
-  <div class="bg-white p-8 rounded-xl shadow-lg">
-    <h1 class="text-3xl font-bold mb-6 text-center">⬆️ Upload Your 3D Model</h1>
-    <p class="text-center text-gray-600 mb-8">
-      Share your creativity with the world. Please fill out the details below to upload your model.
-    </p>
-
-    <form class="space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <label for="model_file" class="block text-lg font-medium text-gray-700">1. Model File (.obj, .fbx, .blend)</label>
-          <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H12a2 2 0 00-2 2v20m30-20V10a2 2 0 00-2-2h-8m2 26v-6m-4 6v-6m-8 6v-6m4 6h-4a2 2 0 01-2-2v-6h-4a2 2 0 01-2-2v-6" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="model_file" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                  <span>Upload a file</span>
-                  <input id="model_file" name="model_file" type="file" class="sr-only">
-                </label>
-                <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs text-gray-500">
-                Supported formats: OBJ, FBX, BLEND, etc.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <label for="preview_image" class="block text-lg font-medium text-gray-700">2. Preview Image (Main Thumbnail)</label>
-          <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H12a2 2 0 00-2 2v20m30-20V10a2 2 0 00-2-2h-8m2 26v-6m-4 6v-6m-8 6v-6m4 6h-4a2 2 0 01-2-2v-6h-4a2 2 0 01-2-2v-6" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="preview_image" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                  <span>Upload an image</span>
-                  <input id="preview_image" name="preview_image" type="file" accept="image/*" class="sr-only">
-                </label>
-                <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs text-gray-500">
-                PNG, JPG, GIF up to 10MB
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <label for="model_name" class="block text-lg font-medium text-gray-700">3. Model Name</label>
-        <input type="text" id="model_name" placeholder="e.g., Cyberpunk Street Scene" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-      </div>
-      
-      <div>
-        <label for="description" class="block text-lg font-medium text-gray-700">4. Description</label>
-        <textarea id="description" rows="4" placeholder="Detailed description of your model, poly count, texture resolution, etc." class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="category" class="block text-lg font-medium text-gray-700">5. Category</label>
-          <select id="category" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-            <option value="">Select Category</option>
-            <option value="scifi">Sci-Fi</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="animals">Animals</option>
-            <option value="vehicles">Vehicles</option>
-            <option value="architecture">Architecture</option>
-            <option value="characters">Characters</option>
-            <option value="nature">Nature</option>
-            <option value="game_assets">Game Assets</option>
-          </select>
-        </div>
-        <div>
-          <label for="price" class="block text-lg font-medium text-gray-700">6. Price ($)</label>
-          <input type="number" id="price" placeholder="20" min="0" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-        </div>
-      </div>
-      
-      <div class="mt-8 p-6 bg-yellow-100 rounded-xl border border-yellow-300">
-        <h3 class="text-xl font-bold text-yellow-800 mb-3">Submission Guidelines</h3>
-        <ul class="list-disc list-inside text-sm text-yellow-700 space-y-2">
-          <li>Ensure your model is in one of the supported formats (.obj, .fbx, .blend, etc.).</li>
-          <li>All models must be original works.</li>
-          <li>Preview images should be high-quality and clearly showcase your model.</li>
-          <li>Provide a detailed and accurate description of your model's features.</li>
+<body class="bg-gray-100 text-gray-900">
+    <nav class="px-6 py-4 flex justify-between items-center shadow-lg fixed w-full z-50">
+        <a href="index.html" class="text-2xl font-bold gradient-text wave-text">ModelShop</a>
+        <ul class="flex space-x-6">
+            <li><a href="index.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Home</a></li>
+            <li><a href="categories.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Categories</a></li>
+            <li><a href="shop.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Shop</a></li>
+            <li><a href="upload.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Upload</a></li>
+            <li><a href="profile.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Profile</a></li>
         </ul>
-      </div>
+        <div>
+            <a href="login.html" class="glow-button bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-all duration-300 hover:scale-105">Login</a>
+            <a href="register.html" class="ml-2 border px-4 py-2 rounded-lg bg-gray-900 hover:bg-gray-400 transition-all duration-300 hover:scale-105 shadow-2xl text-white">Sign Up</a>
+        </div>
+    </nav>
+    
+    <header class="relative w-full h-80 flex items-center justify-center text-center">
+        <div class="relative z-20 px-6">
+            <h1 class="text-6xl font-extrabold mb-4 gradient-text">Upload Your Model</h1>
+            <p class="text-2xl mb-8 text-gray-700">Share your creations with the world.</p>
+        </div>
+    </header>
 
-      <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-150">
-        Submit Model for Review
-      </button>
-    </form>
-  </div>
-</section>
+    <section class="p-10 max-w-4xl mx-auto rounded-xl shadow-xl mt-12 mb-12 bg-white">
+        <h2 class="text-3xl font-bold mb-6 text-center">Fill out the details for your 3D model</h2>
 
+        <form action="#" method="POST" class="space-y-6">
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Model Title</label>
+                <input type="text" id="title" name="title" placeholder="e.g. 'Fantasy Sword' or 'Modern Cityscape'"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300"
+                    required>
+            </div>
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea id="description" name="description" rows="4"
+                    placeholder="Tell us about your model, its features, and ideal use case."
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300"
+                    required></textarea>
+            </div>
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <select id="category" name="category"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300"
+                    required>
+                    <option value="">Select a category</option>
+                    <option value="game-assets">Game Assets</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="characters">Characters</option>
+                    <option value="vehicles">Vehicles</option>
+                    <option value="architecture">Architecture</option>
+                    <option value="nature">Nature</option>
+                </select>
+            </div>
+            <div>
+                <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
+                <input type="number" id="price" name="price" placeholder="e.g. 19.99"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300"
+                    step="0.01" min="0" required>
+            </div>
+            <div>
+                <label for="file-upload" class="block text-sm font-medium text-gray-700 mb-1">Upload Model File</label>
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md transition-all duration-300 hover:border-yellow-500">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                            viewBox="0 0 48 48" aria-hidden="true">
+                            <path
+                                d="M28 8H12a2 2 0 00-2 2v20m30-10V12a2 2 0 00-2-2h-16l-4-4H8a2 2 0 00-2 2v28a2 2 0 002 2h24a2 2 0 002-2V16m-12 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="file-upload"
+                                class="relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-yellow-500">
+                                <span>Upload a file</span>
+                                <input id="file-upload" name="file-upload" type="file" class="sr-only" required>
+                            </label>
+                            <p class="pl-1 text-gray-500">or drag and drop</p>
+                        </div>
+                        <p class="text-xs text-gray-500">
+                            Accepted file types: .obj, .fbx, .blend, .max (max 1GB)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit"
+                    class="glow-button w-full sm:w-auto mt-4 bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg hover:bg-yellow-500 font-bold transition-all duration-300 hover:scale-105">
+                    Submit Model
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <footer class="mt-12 p-8 relative bg-black text-white">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+            <div>
+                <h3 class="text-xl font-bold mb-4 gradient-text wave-text">ModelShop</h3>
+                <p class="text-sm text-gray-400">The premier marketplace for high-quality 3D models, assets, and digital art.</p>
+                <p class="text-sm text-gray-400 mt-2 font-bold gradient-text">Email: support@modelshop.com</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-yellow-400 transition-all text-gray-400">Home</a></li>
+                    <li><a href="categories.html" class="hover:text-yellow-400 transition-all text-gray-400">Categories</a></li>
+                    <li><a href="shop.html" class="hover:text-yellow-400 transition-all text-gray-400">Shop</a></li>
+                    <li><a href="upload.html" class="hover:text-yellow-400 transition-all text-gray-400">Upload Model</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">My Account</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="profile.html" class="hover:text-yellow-400 transition-all text-gray-400">Profile</a></li>
+                    <li><a href="login.html" class="hover:text-yellow-400 transition-all text-gray-400">Login</a></li>
+                    <li><a href="register.html" class="hover:text-yellow-400 transition-all text-gray-400">Register</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-all text-gray-400">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Newsletter</h3>
+                <p class="text-sm text-gray-400 mb-3 wave-text">Subscribe to get the latest models and discounts.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email"
+                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none border border-gray-700">
+                    <button
+                        class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 pt-4 border-t border-gray-700 text-center relative z-10">
+            <p class="text-sm text-gray-500 gradient-text">&copy; 2025 ModelShop. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
