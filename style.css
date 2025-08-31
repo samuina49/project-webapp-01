@@ -1,0 +1,598 @@
+/* ===== BASE STYLES ===== */
+/* กำหนดการเคลื่อนไหวพื้นหลังหลัก */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* เอฟเฟกต์แสงสว่างสำหรับปุ่มและองค์ประกอบ */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6);
+    }
+}
+
+/* เอฟเฟกต์คลื่นสำหรับข้อความ */
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(5px) rotate(1deg);
+    }
+    50% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    75% {
+        transform: translateX(2px) rotate(0.5deg);
+    }
+}
+
+/* เอฟเฟกต์ลอยตัวสำหรับองค์ประกอบตกแต่ง */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-3px) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+/* เอฟเฟกต์การเต้นของข้อความ */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* เอฟเฟกต์การเลื่อนขึ้น */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* เอฟเฟกต์การเต้นของพัลส์ */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* เอฟเฟกต์ประกายไฟ */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* เอฟเฟกต์สีรุ้ง */
+@keyframes rainbow {
+    0% {
+        color: #ff6b6b;
+    }
+    16.66% {
+        color: #feca57;
+    }
+    33.33% {
+        color: #48dbfb;
+    }
+    50% {
+        color: #ff9ff3;
+    }
+    66.66% {
+        color: #54a0ff;
+    }
+    83.33% {
+        color: #5f27cd;
+    }
+    100% {
+        color: #ff6b6b;
+    }
+}
+
+/* เอฟเฟกต์การหมุน 3D */
+@keyframes rotate-3d {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* เอฟเฟกต์เส้นขีดเส้นใต้ */
+@keyframes underline-grow {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* เอฟเฟกต์ริปเปิล */
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+        transform: scale(1);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+        transform: scale(1);
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+/* ข้อความที่มีการไล่ระดับสี */
+.gradient-text {
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientBG 3s ease infinite;
+}
+
+/* ข้อความที่มีเอฟเฟกต์คลื่น */
+.wave-text {
+    display: inline-block;
+    animation: wave 3s ease-in-out infinite;
+}
+
+/* ข้อความที่มีเอฟเฟกต์การเด้ง */
+.bounce-text {
+    animation: bounce 2s infinite;
+}
+
+/* ข้อความสีรุ้ง */
+.rainbow-text {
+    animation: rainbow 3s linear infinite;
+    font-weight: bold;
+}
+
+/* ปุ่มที่มีเอฟเฟกต์แสงสว่าง */
+.glow-button {
+    animation: glow 2s ease-in-out infinite alternate, ripple 3s infinite;
+    position: relative;
+    overflow: visible;
+}
+
+/* เอฟเฟกต์กระจกสำหรับพื้นหลัง */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* องค์ประกอบที่ลอยได้ */
+.floating-shape {
+    position: absolute;
+    pointer-events: none;
+    animation: floating 8s ease-in-out infinite;
+}
+
+/* การกำหนดตำแหน่งของรูปทรงลอยต่างๆ */
+.shape-1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    top: 70%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 4s;
+}
+
+.shape-4 {
+    top: 30%;
+    right: 20%;
+    animation-delay: 6s;
+}
+
+/* เอฟเฟกต์การเลื่อนขึ้น */
+.slide-up {
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* ===== LAYOUT STYLES ===== */
+/* พื้นหลังของ body */
+body {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb, #d1d5db);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* การออกแบบ Navigation Bar */
+nav {
+    backdrop-filter: blur(10px);
+    background: rgba(17, 24, 39, 0.9);
+}
+
+/* ลิงก์ใน Navigation */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fbbf24;
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* การออกแบบ Footer */
+footer {
+    background: linear-gradient(135deg, #1f2937, #111827, #0f172a);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+    animation: rotate-3d 20s linear infinite;
+}
+
+/* ===== COMPONENT STYLES ===== */
+/* การ์ดหมวดหมู่ */
+.category-card {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    animation: card-hover 0.6s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.category-card:hover .category-emoji {
+    animation: emoji-dance 0.6s ease-in-out;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+/* การ์ดสินค้า */
+.product-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.6s ease-out;
+}
+
+.product-card:hover {
+    transform: perspective(1000px) scale(1.05) translateY(-10px) rotateX(5deg);
+    z-index: 50;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(251, 191, 36, 0.2);
+}
+
+/* การ์ดสถิติ */
+.stat-card {
+    animation: stat-grow 1s ease-out;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.stat-card:hover::before {
+    left: 100%;
+}
+
+.stat-card:hover {
+    animation: card-hover 0.6s ease-in-out;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* รายการโมเดล */
+.model-item {
+    animation: model-slide 0.8s ease-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.model-item:hover {
+    transform: translateX(10px) scale(1.02);
+    background: linear-gradient(45deg, rgba(251, 191, 36, 0.1), rgba(59, 130, 246, 0.1));
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* รายการเมนู */
+.menu-item {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+    transition: width 0.3s ease;
+}
+
+.menu-item:hover::before {
+    width: 100%;
+}
+
+.menu-item:hover {
+    transform: translateX(5px);
+    color: #3b82f6;
+}
+
+/* ===== SPECIAL EFFECTS ===== */
+/* เอฟเฟกต์タイトルページ */
+.page-title {
+    position: relative;
+    display: inline-block;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+    animation: underline-grow 2s ease-in-out infinite alternate;
+}
+
+/* เอฟเฟกต์ประกายไฟ */
+.sparkle-element {
+    position: relative;
+}
+
+.sparkle-element::before,
+.sparkle-element::after {
+    content: '✨';
+    position: absolute;
+    animation: sparkle 2s infinite;
+    pointer-events: none;
+    font-size: 12px;
+}
+
+.sparkle-element::before {
+    top: -5px;
+    left: -5px;
+    animation-delay: 0s;
+}
+
+.sparkle-element::after {
+    bottom: -5px;
+    right: -5px;
+    animation-delay: 1s;
+}
+
+/* เอฟเฟกต์ Avatar */
+.avatar-container {
+    animation: avatar-glow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-container::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    animation: sparkle 2s infinite;
+    z-index: 10;
+}
+
+/* ===== FORM STYLES ===== */
+/* สไตล์ฟอร์มอัพโหลด */
+.upload-form {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.upload-form input,
+.upload-form textarea,
+.upload-form select {
+    transition: all 0.3s ease;
+}
+
+.upload-form input:focus,
+.upload-form textarea:focus,
+.upload-form select:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+/* ===== CART STYLES ===== */
+/* สไตล์ตะกร้าสินค้า */
+.cart-item {
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .floating-shape {
+        display: none;
+    }
+    
+    .product-card:hover {
+        transform: none;
+    }
+}
+
+/* ===== BUTTON STYLES ===== */
+/* ปุ่ม View Details */
+.details-btn {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    transition: all 0.3s ease;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.details-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ป้าย New และ Sale */
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.new-badge {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.sale-badge {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: rgb(255, 255, 255);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* สไตล์ราคา */
+.price-tag {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #4f46e5;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+}
+
+.discount-price {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+/* การ์ดสินค้าเพิ่มเติม */
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.product-image {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}

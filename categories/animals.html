@@ -4,225 +4,339 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Animals Category</title>
-    <style>
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        @keyframes glow {
-            0%,
-            100% {
-                box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6);
-            }
-        }
-        @keyframes ripple {
-            0% {
-                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
-                transform: scale(1);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
-                transform: scale(1.02);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
-                transform: scale(1);
-            }
-        }
-        @keyframes wave {
-            0%,
-            100% {
-                transform: translateX(0) rotate(0deg);
-            }
-            25% {
-                transform: translateX(5px) rotate(1deg);
-            }
-            50% {
-                transform: translateX(-3px) rotate(-1deg);
-            }
-            75% {
-                transform: translateX(2px) rotate(0.5deg);
-            }
-        }
-        @keyframes bounce {
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        .gradient-text {
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientBG 3s ease infinite;
-        }
-        .wave-text {
-            display: inline-block;
-            animation: wave 3s ease-in-out infinite;
-        }
-        .glow-button {
-            animation: glow 2s ease-in-out infinite alternate, ripple 3s infinite;
-            position: relative;
-            overflow: visible;
-        }
-        .product-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .product-card:hover {
-            transform: perspective(1000px) scale(1.03) translateY(-5px);
-            z-index: 50;
-            position: relative;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-        .floating-card {
-            animation: floating 8s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-5px) rotate(1deg); }
-            50% { transform: translateY(-3px) rotate(-1deg); }
-            75% { transform: translateY(-8px) rotate(0.5deg); }
-        }
-        nav {
-            backdrop-filter: blur(10px);
-            background: rgba(17, 24, 39, 0.9);
-        }
-        footer {
-            background: linear-gradient(135deg, #1f2937, #111827, #0f172a);
-            position: relative;
-            overflow: hidden;
-        }
-    </style>
+    <title>Animals Category - ModelShop</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
-<body class="bg-white text-gray-900">
-    <nav class="px-6 py-4 flex justify-between items-center shadow-lg fixed w-full z-50">
+<body class="bg-gray-50 text-gray-900">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
         <a href="../index.html" class="text-2xl font-bold gradient-text wave-text">ModelShop</a>
-        <ul class="flex space-x-6">
-            <li><a href="../index.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Home</a></li>
-            <li><a href="../categories.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Categories</a></li>
-            <li><a href="../shop.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Shop</a></li>
-            <li><a href="../upload.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Upload</a></li>
-            <li><a href="../profile.html" class="text-white hover:text-yellow-400 transition-all duration-300 hover:scale-110">Profile</a></li>
+        <ul class="flex space-x-8">
+            <li><a href="../index.html" class="nav-link text-gray-300">Home</a></li>
+            <li><a href="../categories.html" class="nav-link text-gray-300">Categories</a></li>
+            <li><a href="../shop.html" class="nav-link text-gray-300">Shop</a></li>
+            <li><a href="../upload.html" class="nav-link text-gray-300">Upload</a></li>
+            <li><a href="../profile.html" class="nav-link text-gray-300">Profile</a></li>
         </ul>
-        <div>
-            <a href="../login.html" class="glow-button bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-all duration-300 hover:scale-105">Login</a>
-            <a href="../register.html" class="ml-2 border px-4 py-2 rounded-lg bg-gray-900 hover:bg-gray-400 transition-all duration-300 hover:scale-105 shadow-2xl text-white">Sign Up</a>
+        <div class="flex items-center space-x-4">
+            <a href="../cart.html" class="relative hover:scale-110 transition-all duration-300 group">
+                <span class="text-2xl">🛒</span>
+                <span class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full animate-pulse">2</span>
+            </a>
+            <a href="../login.html" class="glow-button bg-yellow-400 text-black px-6 py-2 rounded-lg hover:bg-yellow-500 transition-all duration-300 hover:scale-105 font-medium">Login</a>
+            <a href="../register.html" class="border border-yellow-400 text-yellow-400 px-6 py-2 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:scale-105 font-medium">Sign Up</a>
         </div>
     </nav>
-    
-    <header class="relative w-full h-80 flex items-center justify-center text-center overflow-hidden pt-12 bg-white">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-white/70"></div>
-        </div>
+
+    <header class="hero-section relative w-full h-96 flex items-center justify-center text-center overflow-hidden pt-16">
         <div class="relative z-20 px-6">
-            <h1 class="text-6xl font-extrabold mb-4 gradient-text">Animals Models</h1>
-            <p class="text-2xl mb-8 text-gray-700">Explore our wild collection of 3D animal models.</p>
+            <div class="category-badge inline-block px-4 py-2 rounded-full text-sm font-medium text-yellow-600 mb-4">
+                🐾 Animals Category
+            </div>
+            <h1 class="text-7xl font-extrabold mb-6 gradient-text">Animal Models</h1>
+            <p class="text-2xl mb-8 text-gray-600 max-w-2xl mx-auto">Explore our wild collection of high-quality 3D animal models with stunning details</p>
         </div>
     </header>
 
-    <section class="p-10 max-w-7xl mx-auto rounded-xl shadow-xl mt-12 mb-12 bg-white">
+    <section class="p-10 max-w-7xl mx-auto mt-12 mb-12">
+        <div class="mb-8 flex justify-between items-center">
+            <h2 class="text-3xl font-bold gradient-text">Featured Animals</h2>
+            <div class="flex space-x-4">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <option>Sort by Price</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest First</option>
+                    <option>Most Popular</option>
+                </select>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-all">
+                    Grid View 📊
+                </button>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/lion.png" alt="Lion Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Lion King</h2>
-                        <p class="text-gray-600 text-sm mb-4">โมเดลสิงโตสุดเท่ สำหรับเกมและแอนิเมชัน</p>
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/lion.png" alt="Lion Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 left-3">
+                        <span class="new-badge text-white text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                    </div>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Lion King</h2>
+                        <p class="text-gray-600 text-sm mb-3">Majestic lion model perfect for games and animations</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★★</div>
+                            <span class="text-gray-500 text-xs ml-2">(127 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$29.99</div>
+                            <div class="text-gray-400 text-sm line-through">$39.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white text-sm px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/tiger.png" alt="Tiger Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">White Tiger</h2>
-                        <p class="text-gray-600 text-sm mb-4">เสือขาวสวยงาม เหมาะกับโปรเจคธรรมชาติ</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/tiger.png" alt="Tiger Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 left-3">
+                        <span class="sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">SALE 25%</span>
+                    </div>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">White Tiger</h2>
+                        <p class="text-gray-600 text-sm mb-3">Beautiful white tiger perfect for nature projects</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★☆</div>
+                            <span class="text-gray-500 text-xs ml-2">(89 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$22.49</div>
+                            <div class="text-gray-400 text-sm line-through">$29.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/elephant.png" alt="Elephant Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">African Elephant</h2>
-                        <p class="text-gray-600 text-sm mb-4">ช้างแอฟริกันสุดยิ่งใหญ่ ดีเทลสมจริง</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/elephant.png" alt="Elephant Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">African Elephant</h2>
+                        <p class="text-gray-600 text-sm mb-3">Massive African elephant with realistic details</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★★</div>
+                            <span class="text-gray-500 text-xs ml-2">(203 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$34.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/wolf.png" alt="Wolf Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Grey Wolf</h2>
-                        <p class="text-gray-600 text-sm mb-4">หมาป่าสีเทา สำหรับเกมผจญภัย</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/wolf.png" alt="Wolf Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Grey Wolf</h2>
+                        <p class="text-gray-600 text-sm mb-3">Wild grey wolf perfect for adventure games</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★☆</div>
+                            <span class="text-gray-500 text-xs ml-2">(76 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$19.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/eagle.png" alt="Eagle Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Golden Eagle</h2>
-                        <p class="text-gray-600 text-sm mb-4">นกอินทรีทอง บินสูงโฉบเฉี่ยว</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/eagle.png" alt="Eagle Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Golden Eagle</h2>
+                        <p class="text-gray-600 text-sm mb-3">Majestic golden eagle soaring gracefully</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★★</div>
+                            <span class="text-gray-500 text-xs ml-2">(156 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$24.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/dolphin.png" alt="Dolphin Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Dolphin</h2>
-                        <p class="text-gray-600 text-sm mb-4">โลมาน่ารัก สำหรับโลกใต้น้ำ</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/dolphin.png" alt="Dolphin Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Dolphin</h2>
+                        <p class="text-gray-600 text-sm mb-3">Adorable dolphin for underwater scenes</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★☆</div>
+                            <span class="text-gray-500 text-xs ml-2">(94 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$18.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/panda.png" alt="Panda Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Giant Panda</h2>
-                        <p class="text-gray-600 text-sm mb-4">แพนด้ายักษ์น่ารัก กินไผ่อย่างมีความสุข</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/panda.png" alt="Panda Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 left-3">
+                        <span class="sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">SALE 30%</span>
+                    </div>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Giant Panda</h2>
+                        <p class="text-gray-600 text-sm mb-3">Cute giant panda eating bamboo happily</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★★</div>
+                            <span class="text-gray-500 text-xs ml-2">(241 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$20.99</div>
+                            <div class="text-gray-400 text-sm line-through">$29.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col product-card floating-card">
-                <div class="w-full h-48 bg-gray-200 overflow-hidden relative"><img src="/assets/animals/horse.png" alt="Horse Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110"></div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-bold text-lg mb-2 gradient-text">Wild Horse</h2>
-                        <p class="text-gray-600 text-sm mb-4">ม้าป่าวิ่งเร็ว สำหรับเกมแฟนตาซี</p>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col product-card floating-card border border-gray-100">
+                <div class="relative">
+                    <div class="w-full h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
+                        <img src="/assets/animals/horse.png" alt="Horse Model" class="absolute inset-0 w-full h-full object-cover object-center transform transition duration-500 hover:scale-110">
                     </div>
-                    <button class="mt-auto bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition glow-button">ดูรายละเอียด</button>
+                    <div class="absolute top-3 right-3 flex items-center space-x-2">
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            ❤️
+                        </button>
+                        <button class="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-all duration-300 hover:scale-110">
+                            🛒
+                        </button>
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-bold text-xl mb-2 gradient-text">Wild Horse</h2>
+                        <p class="text-gray-600 text-sm mb-3">Fast running wild horse perfect for fantasy games</p>
+                        <div class="flex items-center mb-3">
+                            <div class="rating-stars text-sm">★★★★☆</div>
+                            <span class="text-gray-500 text-xs ml-2">(118 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-tag px-3 py-1 rounded-full font-bold text-lg">$26.99</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="details-btn text-white px-4 py-2 rounded-lg font-medium transition-all flex-1 hover:scale-105 w-full">
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -242,6 +356,7 @@
                     <li><a href="../categories.html" class="hover:text-yellow-400 transition-all text-gray-400">Categories</a></li>
                     <li><a href="../shop.html" class="hover:text-yellow-400 transition-all text-gray-400">Shop</a></li>
                     <li><a href="../upload.html" class="hover:text-yellow-400 transition-all text-gray-400">Upload Model</a></li>
+                    <li><a href="../cart.html" class="hover:text-yellow-400 transition-all text-gray-400">Cart</a></li>
                 </ul>
             </div>
             <div>
@@ -250,17 +365,14 @@
                     <li><a href="../profile.html" class="hover:text-yellow-400 transition-all text-gray-400">Profile</a></li>
                     <li><a href="../login.html" class="hover:text-yellow-400 transition-all text-gray-400">Login</a></li>
                     <li><a href="../register.html" class="hover:text-yellow-400 transition-all text-gray-400">Register</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition-all text-gray-400">FAQ</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Newsletter</h3>
                 <p class="text-sm text-gray-400 mb-3 wave-text">Subscribe to get the latest models and discounts.</p>
                 <form class="flex">
-                    <input type="email" placeholder="Your Email"
-                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none border border-gray-700">
-                    <button
-                        class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">Subscribe</button>
+                    <input type="email" placeholder="Your Email" class="p-2 rounded-l text-black text-sm w-full focus:outline-none border border-gray-700">
+                    <button class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -269,4 +381,5 @@
         </div>
     </footer>
 </body>
+
 </html>
