@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Shopping Cart - ModelShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ✅ HEADER -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold gradient-text wave-text">ModelShop</a>
+        <ul class="flex space-x-8">
+            <li><a href="index.html" class="nav-link text-gray-300">Home</a></li>
+            <li><a href="categories.html" class="nav-link text-gray-300">Categories</a></li>
+            <li><a href="shop.html" class="nav-link text-gray-300">Shop</a></li>
+            <li><a href="upload.html" class="nav-link text-gray-300">Upload</a></li>
+            <li><a href="profile.html" class="nav-link text-gray-300">Profile</a></li>
+        </ul>
+        <div class="flex items-center space-x-4">
+            <a href="cart.html" class="relative hover:scale-110 transition-all duration-300 group">
+                <span class="text-2xl">🛒</span>
+                <span
+                    class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full animate-pulse">2</span>
+            </a>
+            <a href="login.html"
+                class="glow-button bg-yellow-400 text-black px-6 py-2 rounded-lg hover:bg-yellow-500 transition-all duration-300 hover:scale-105 font-medium">Login</a>
+            <a href="register.html"
+                class="border border-yellow-400 text-yellow-400 px-6 py-2 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:scale-105 font-medium">Sign
+                Up</a>
+        </div>
+    </nav>
+
+    <!-- ✅ MAIN -->
+    <main class="pt-28 max-w-6xl mx-auto px-6">
+        <!-- เอฟเฟกต์พื้นหลังลอย -->
+        <div class="floating-shape shape-1">🚀</div>
+        <div class="floating-shape shape-2">🐉</div>
+        <div class="floating-shape shape-3">✨</div>
+        <div class="floating-shape shape-4">🔮</div>
+
+        <h1 class="text-5xl font-extrabold mb-12 text-gray-800 page-title bounce-text">
+            <span class="gradient-text">🛒 Your Shopping Cart</span></h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- รายการสินค้า -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Product Item 1: Sci-Fi Mech -->
+                <div
+                    class="cart-item flex items-center justify-between bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 glass">
+                    <div class="flex items-center space-x-6">
+                        <div class="relative">
+                            <img src="./assets/sci-fi/Sci Fi Mech.png" class="w-24 h-24 rounded-xl object-cover product-image" alt="Sci-Fi Mech Model">
+                            <span class="product-badge new-badge">NEW</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl rainbow-text">Sci-Fi Mech R-9</h3>
+                            <p class="text-gray-500 text-sm"><i class="fas fa-robot mr-2"></i>Category: Sci-Fi</p>
+                            <div class="flex items-center mt-2">
+                                <p class="text-gray-700 font-bold price-tag">$45.00</p>
+                                <span class="ml-3 text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full"><i class="fas fa-bolt mr-1"></i>Popular</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="quantity-btn w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:bg-yellow-100 hover:border-yellow-400 transition-all">
+                            <i class="fas fa-minus text-xs"></i>
+                        </button>
+                        <span class="px-3 py-1 bg-gray-100 rounded-lg font-medium">1</span>
+                        <button class="quantity-btn w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:bg-yellow-100 hover:border-yellow-400 transition-all">
+                            <i class="fas fa-plus text-xs"></i>
+                        </button>
+                        <button class="remove-btn text-red-500 hover:text-red-700 ml-4 transition-all">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Item 2: Fantasy Dragonling -->
+                <div
+                    class="cart-item flex items-center justify-between bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 glass">
+                    <div class="flex items-center space-x-6">
+                        <div class="relative">
+                            <img src="./assets/fantasy/Dragonling.png" class="w-24 h-24 rounded-xl object-cover product-image" alt="Fantasy Dragonling">
+                            <span class="product-badge sale-badge">SALE</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl rainbow-text">Dragonling</h3>
+                            <p class="text-gray-500 text-sm"><i class="fas fa-dragon mr-2"></i>Category: Fantasy</p>
+                            <div class="flex items-center mt-2">
+                                <span class="original-price">$65.00</span>
+                                <p class="discount-price font-bold text-lg">$55.00</p>
+                                <span class="ml-3 text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full"><i class="fas fa-fire mr-1"></i>Hot</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="quantity-btn w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:bg-yellow-100 hover:border-yellow-400 transition-all">
+                            <i class="fas fa-minus text-xs"></i>
+                        </button>
+                        <span class="px-3 py-1 bg-gray-100 rounded-lg font-medium">1</span>
+                        <button class="quantity-btn w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:bg-yellow-100 hover:border-yellow-400 transition-all">
+                            <i class="fas fa-plus text-xs"></i>
+                        </button>
+                        <button class="remove-btn text-red-500 hover:text-red-700 ml-4 transition-all">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recommendation Section -->
+                <div class="mt-10 slide-up">
+                    <h3 class="text-xl font-bold mb-4 gradient-text"><i class="fas fa-star mr-2"></i>Recommended for You</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all flex items-center space-x-3">
+                            <img src="./assets/characters/warrior.png" class="w-12 h-12 rounded-lg object-cover" alt="Recommended Model">
+                            <div>
+                                <p class="font-medium text-sm">Space Fighter</p>
+                                <p class="text-yellow-600 font-bold text-xs">$35.00</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all flex items-center space-x-3">
+                            <img src="./assets/fantasy/castle.png" class="w-12 h-12 rounded-lg object-cover" alt="Recommended Model">
+                            <div>
+                                <p class="font-medium text-sm">Ancient Castle</p>
+                                <p class="text-yellow-600 font-bold text-xs">$40.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สรุปยอด -->
+            <div class="bg-white p-8 rounded-xl shadow-lg space-y-6 glass slide-up">
+                <h2 class="text-2xl font-bold border-b pb-3 gradient-text"><i class="fas fa-receipt mr-2"></i>Order Summary</h2>
+                
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-600">Subtotal (2 items)</span>
+                    <span class="font-medium">$100.00</span>
+                </div>
+                
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-600">Tax</span>
+                    <span class="font-medium">$10.00</span>
+                </div>
+                
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-600">Discount</span>
+                    <span class="text-green-600 font-medium">-$10.00</span>
+                </div>
+                
+                <div class="border-t pt-3 mt-2">
+                    <div class="flex justify-between font-bold text-xl">
+                        <span>Total</span>
+                        <span class="gradient-text rainbow-text">$100.00</span>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-gift text-yellow-600 mt-1 mr-3"></i>
+                        <div>
+                            <p class="font-medium text-yellow-800">Free shipping on orders over $100!</p>
+                            <p class="text-xs text-yellow-600">You've qualified for free shipping</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    class="glow-button w-full bg-yellow-400 text-gray-900 px-4 py-4 rounded-xl hover:bg-yellow-500 font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center">
+                    <i class="fas fa-lock mr-3"></i>
+                    Proceed to Checkout
+                </button>
+                
+                <div class="text-center mt-4">
+                    <p class="text-sm text-gray-500">or <a href="shop.html" class="text-yellow-600 hover:underline">Continue Shopping</a></p>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mt-4">
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fas fa-shield-alt text-gray-500 mr-2"></i>
+                        <span>Secure payment · 100% satisfaction guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ✅ FOOTER -->
+    <footer class="mt-12 p-8 relative bg-black text-white">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+            <div>
+                <h3 class="text-xl font-bold mb-4 gradient-text wave-text">ModelShop</h3>
+                <p class="text-sm text-gray-400">The premier marketplace for high-quality 3D models, assets, and digital
+                    art.</p>
+                <p class="text-sm text-gray-400 mt-2 font-bold gradient-text">Email: support@modelshop.com</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-yellow-400 transition-all text-gray-400">Home</a></li>
+                    <li><a href="categories.html"
+                            class="hover:text-yellow-400 transition-all text-gray-400">Categories</a></li>
+                    <li><a href="shop.html" class="hover:text-yellow-400 transition-all text-gray-400">Shop</a></li>
+                    <li><a href="upload.html" class="hover:text-yellow-400 transition-all text-gray-400">Upload
+                            Model</a></li>
+                    <li><a href="cart.html" class="hover:text-yellow-400 transition-all text-gray-400">Cart</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">My Account</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="profile.html" class="hover:text-yellow-400 transition-all text-gray-400">Profile</a>
+                    </li>
+                    <li><a href="login.html" class="hover:text-yellow-400 transition-all text-gray-400">Login</a></li>
+                    <li><a href="register.html" class="hover:text-yellow-400 transition-all text-gray-400">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Newsletter</h3>
+                <p class="text-sm text-gray-400 mb-3 wave-text">Subscribe to get the latest models and discounts.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email"
+                        class="p-2 rounded-l text-black text-sm w-full focus:outline-none border border-gray-700">
+                    <button
+                        class="glow-button bg-yellow-400 text-gray-900 p-2 rounded-r hover:bg-yellow-500 font-semibold text-sm">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 pt-4 border-t border-gray-700 text-center relative z-10">
+            <p class="text-sm text-gray-500 gradient-text">&copy; 2025 ModelShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
